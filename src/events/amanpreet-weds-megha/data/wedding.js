@@ -1,136 +1,106 @@
 /**
- * Both links render the same website, story, full itinerary, and venue list.
- * Only the hero and "so please join us" event details vary by URL.
+ * Both links render the same website, story, programme, and venue.
+ * The wedding page counts down to the wedding morning.
+ * The reception page counts down to Reception of Barat the same evening.
  *
- * Dates, venue details, and photographs below contain sample values carried
- * over from the supplied project. Confirm them before sharing invitations.
+ * Names, dates, and the programme are taken from the printed invitation.
+ * Photographs are the couple portraits supplied for this invitation.
  */
-const weddingDateISO = "2026-11-13T10:00:00+05:30";
-const receptionDateISO = "2026-11-15T18:00:00+05:30"; // Confirm the reception start time.
+const weddingDateISO = "2026-12-04T09:00:00+05:30";
+const baratDateISO = "2026-12-04T18:00:00+05:30";
 
-// These are two INDEPENDENT venue entries. Replace each name, address, link,
-// photograph, and description when you have the confirmed venue information.
-// At present the source project only supplied one sample venue and photograph.
-const weddingMapsUrl =
-  "https://www.google.com/maps/dir//DEVDAR+By+Nirvana,+Khanyara+Rd,+near+H.P.+University+Regional+Centre,+Dharamshala,+Sokani+Da+Kot,+Himachal+Pradesh+176218/@30.7593216,76.6345216,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x391b53d3f7d6e3f7:0xc63998dd11014848!2m2!1d76.3689738!2d32.206809?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D";
-const receptionMapsUrl =
-  "https://www.google.com/maps/dir//Hotel+Dh,+6897%2BQC2,+Sudher,+Dharamshala,+Loharkar,+Himachal+Pradesh+176217/@30.7625984,76.6377984,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x391b50de5b3553f9:0xf740add93f821e42!2m2!1d76.313525!2d32.219395?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D";
+const residenceMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=Village+Bhadwal+Matour+Dharamshala+Kangra+Himachal+Pradesh+176001";
 
-const weddingVenue = {
+const residence = {
   id: "wedding",
-  label: "Wedding Venue",
-  name: "Devdar Resort",
-  address: "Khanyara Road, Khaniara, Kangra, Himachal Pradesh (176218)",
+  label: "At Their Residence",
+  name: "Their Residence",
+  address:
+    "Vill. Bhadwal, P.O. Matour, Teh. Dharamshala, Distt. Kangra (H.P.) - 176001",
   location: "Dharamshala",
-  mapsUrl: weddingMapsUrl,
-  photo: `${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/Wedding1.jpg`,
-  photo_2: `${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/Wedding3.jpeg`,
-  photoAlt: "Illustrated wedding venue exterior (sample image)",
+  mapsUrl: residenceMapsUrl,
   description:
-    "A beautiful beginning, surrounded by love, blessings, and the warmth of our favorite people.\nJoin us as we celebrate our special day.",
+    "The wedding will be held at their residence in Village Bhadwal.\nJoin the family for three days of celebrations.",
 };
 
-const receptionVenue = {
-  id: "reception",
-  label: "Reception Venue",
-  name: "Dhauladhar Heights",
-  address: "6897+QC2, Sudher, Dharamshala, Loharkar, Himachal Pradesh (176217)",
-  location: "Dharamshala",
-  mapsUrl: receptionMapsUrl,
-  photo: `${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/Reception2.jpg`,
-  photo_2: `${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/Reception1.jpg`,
-  photoAlt: "Illustrated reception venue exterior (sample image)",
-  description:
-    "An evening of love, laughter, music, and memories beneath the mountain skies.\nJoin us for a celebration to remember.",
-};
+const residenceLine = "Their Residence, Vill. Bhadwal";
 
-// The same five-day itinerary appears on BOTH /wedding and /reception.
+// The same three-day programme appears on both invitation links.
 const sharedSchedule = [
   {
-    id: "path",
-    offset: -2,
-    location: "At Our Residence",
-    items: [
-      { title: "Bhogh Shri Akhand Path", time: "11:00 AM" },
-      { title: "Kirtan & Ardaas", time: "11:00 AM - 12:30 PM" },
-      { title: "Guru Ka Langar", time: "12:30 PM - 4:00 PM" },
-    ],
-  },
-  {
-    id: "jago",
+    id: "dham",
     offset: -1,
-    location: "At Our Residence",
+    location: residenceLine,
     items: [
-      { title: "Jago", time: "6:00 PM" },
-      { title: "Mehndi", time: "8:00 PM" },
+      { title: "Dham", time: "12:00 Noon – 6:00 PM" },
+      { title: "Mehandi / Ladies Sangeet", time: "5:00 PM" },
     ],
   },
   {
     id: "wedding",
     offset: 0,
     note: "(Wedding Day)",
-    location: "Devdar Resort, Dharamshala",
+    location: residenceLine,
     items: [
-      { title: "Departure of Barat", time: "9:00 AM" },
-      { title: "Varmala Ceremony", time: "10:15 AM" },
-      { title: "Anand Karaj at the Gurudwara", time: "12:15 PM" },
-      { title: "Wedding Pheras", time: "2:30 PM" },
-      { title: "Vadu Pravesh", time: "6:00 PM" },
+      { title: "Samuhat", time: "9:00 AM" },
+      { title: "Shanti Hawan", time: "11:00 AM" },
+      { title: "Reception of Barat", time: "6:00 PM" },
     ],
   },
   {
-    id: "dham",
+    id: "vidai",
     offset: 1,
-    location: "Shri Gurudwara Singh Sabha, Yol",
-    items: [{ title: "Traditional Wedding Dham", time: "12:00 PM" }],
-  },
-  {
-    id: "reception",
-    dateISO: receptionDateISO,
-    note: "(Reception)",
-    location: "Dhauladhar Heights, Dharamshala",
-    items: [{ title: "Wedding Reception", time: "6:30 PM" }],
+    location: residenceLine,
+    items: [{ title: "Vidai", time: "10:00 AM" }],
   },
 ];
 
 const sharedSections = {
-  scheduleTitle: "The Celebrations",
+  scheduleTitle: "Programme",
   scheduleBaseDateISO: weddingDateISO,
   schedule: sharedSchedule,
-  venues: [weddingVenue, receptionVenue], // Wedding venue first, reception venue second.
+  venues: [residence],
   letter:
-    "We can't wait to celebrate together and share an unforgettable time with you.",
+    "Joyfully invite you and your family to the auspicious occasion of the wedding of their beloved daughter.",
 };
 
 export const wedding = {
-  firstName: "Amanpreet",
-  secondName: "Megha",
-  title: "Amanpreet weds Megha",
-  names: "Amanpreet & Megha",
-  spokenNames: "Amanpreet and Megha",
-  monogram: "AM",
-  contactEmail: "harkrishanyol@gmail.com",
+  firstName: "Renu",
+  secondName: "Rohit",
+  title: "Renu weds Rohit",
+  names: "Renu & Rohit",
+  spokenNames: "Renu and Rohit",
+  monogram: "RR",
+  hosts: "Smt. Kiran Bala & Sh. Harnam Singh",
+  groomLine: "Rohit, son of Sh. Asha Devi & Sh. Ranjit Singh",
+  groomHome:
+    "V.P.O. Rajiana 53 Mile, Teh. Nagrota Bagwan, Distt. Kangra (H.P.)",
+  signoff: "With Warm Regards",
+  signoffNames: "All Relatives & Friends",
+  rsvp: {
+    names: "Rajat Kumar & All Family Members",
+    phones: ["9816329816", "9882622025"],
+  },
 
   events: {
     wedding: {
       ...sharedSections,
-      label: "Wedding & Reception",
-      heroLabel: "Wedding & Reception",
+      label: "Wedding",
+      heroLabel: "Wedding",
+      headlineDate: "3 – 5 December 2026",
       dateISO: weddingDateISO,
-      receptionDateISO,
       countdownLabel: "wedding",
-      venue: weddingVenue, // Hero + later "so please join us" venue.
+      venue: residence,
     },
     reception: {
       ...sharedSections,
-      schedule: sharedSchedule.filter(
-        (day) => day.id === "dham" || day.id === "reception",
-      ),
-      label: "Reception",
-      heroLabel: "Reception Celebration",
-      dateISO: receptionDateISO,
-      countdownLabel: "reception",
-      venue: receptionVenue, // Hero + later "so please join us" venue.
+      label: "Reception of Barat",
+      heroLabel: "Reception of Barat",
+      headlineDate: "4 December 2026",
+      dateISO: baratDateISO,
+      countdownLabel: "reception of barat",
+      venue: residence,
     },
   },
 };
@@ -158,40 +128,29 @@ function shiftDate(iso, offset) {
 export function getInvitation(variant = "wedding") {
   const key = variant === "reception" ? "reception" : "wedding";
   const event = wedding.events[key];
-  const dates = [
-    event.dateISO,
-    ...(event.receptionDateISO ? [event.receptionDateISO] : []),
-  ];
+  const dates = [event.dateISO];
   const dateLine = dates
     .map((iso) => formatDate(iso, { day: "numeric", month: "long" }))
     .join(" & ");
-  const sameMonth =
-    dates.length === 2 && dates[0].slice(0, 7) === dates[1].slice(0, 7);
-  const invitationDate = sameMonth
-    ? `${formatDate(dates[0], { day: "numeric" })} & ${formatDate(dates[1], { day: "numeric", month: "long", year: "numeric" })}`
-    : dates
-        .map((iso) =>
-          formatDate(iso, { day: "numeric", month: "long", year: "numeric" }),
-        )
-        .join(" & ");
+  const invitationDate = dates
+    .map((iso) =>
+      formatDate(iso, { day: "numeric", month: "long", year: "numeric" }),
+    )
+    .join(" & ");
+  const headline = event.headlineDate || invitationDate;
 
   return {
     ...event,
     variant: key,
     year: formatDate(event.dateISO, { year: "numeric" }),
-    dateLine,
-    dateLabel: invitationDate.toLowerCase(),
-    joinDateLabel:
-      key === "wedding"
-        ? formatDate(event.dateISO, {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })
-        : invitationDate.toLowerCase(),
-    footerDate: invitationDate,
+    dateLine: event.headlineDate
+      ? event.headlineDate.replace(/\s+\d{4}$/, "")
+      : dateLine,
+    dateLabel: headline.toLowerCase(),
+    joinDateLabel: headline,
+    footerDate: headline,
     footerLabel: event.label,
-    footerLocation: weddingVenue.location,
+    footerLocation: residence.location,
     schedule: event.schedule.map((day) => ({
       ...day,
       title: formatDate(

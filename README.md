@@ -7,8 +7,8 @@ This is one Vite + React application that can host multiple independent invitati
 | URL | Page |
 | --- | --- |
 | `/` | InviteYourWay homepage (minimal starting point) |
-| `/amanpreet-weds-megha/wedding` | Amanpreet & Megha: wedding invitation |
-| `/amanpreet-weds-megha/reception` | Amanpreet & Megha: reception invitation |
+| `/renu-weds-rohit/wedding` | Renu & Rohit: wedding invitation |
+| `/renu-weds-rohit/reception` | Renu & Rohit: reception invitation |
 | any unknown URL | Page not found |
 
 `/wedding` and `/reception` at the **root** are no longer event URLs; their fully qualified replacements are the two paths above. They both continue to render the same original invitation component tree, with their existing route-specific details.
@@ -27,8 +27,8 @@ npm run dev
 Then visit:
 
 - `http://localhost:5173/`
-- `http://localhost:5173/amanpreet-weds-megha/wedding`
-- `http://localhost:5173/amanpreet-weds-megha/reception`
+- `http://localhost:5173/renu-weds-rohit/wedding`
+- `http://localhost:5173/renu-weds-rohit/reception`
 
 For a production build, run `npm run build` and `npm run preview`.
 
@@ -98,7 +98,7 @@ The main app is now responsible for URL matching. The former root `/` → `/wedd
 
 ## Deployment
 
-`vercel.json` and `public/_redirects` contain history fallbacks so directly opening or refreshing `/amanpreet-weds-megha/wedding` or `/amanpreet-weds-megha/reception` can load the React app instead of returning 404. Use the file appropriate to your host. Other hosting providers need an equivalent fallback to `index.html`. Vite is deployed at the **domain root** (`base: '/'`); event names are URL paths, not separate Vite applications.
+`vercel.json` and `public/_redirects` contain history fallbacks so directly opening or refreshing `/renu-weds-rohit/wedding` or `/renu-weds-rohit/reception` can load the React app instead of returning 404. Use the file appropriate to your host. Other hosting providers need an equivalent fallback to `index.html`. Vite is deployed at the **domain root** (`base: '/'`); event names are URL paths, not separate Vite applications.
 
 The website does not provide privacy/access control for invitation pages. Do not put passwords or private guest data in public event configurations.
 

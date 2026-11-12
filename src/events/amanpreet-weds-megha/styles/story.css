@@ -169,11 +169,11 @@
 }
 
 .story-invite .chapter-copy.left {
-  right: calc(50% + 148px);
+  right: calc(50% + 200px);
 }
 
 .story-invite .chapter-copy.right {
-  left: calc(50% + 148px);
+  left: calc(50% + 200px);
 }
 
 .story-invite .chapter-copy h3 {
@@ -197,8 +197,8 @@
   position: absolute;
   left: 50%;
   top: 44%;
-  width: min(210px, 30vw);
-  height: 46vh;
+  width: min(320px, 36vw);
+  height: 54vh;
   transform: translateX(-50%);
 }
 
@@ -285,7 +285,7 @@
   top: auto;
   left: auto;
   right: auto;
-  width: min(220px, 100%);
+  width: min(320px, 100%);
 }
 
 .story-invite .join, .story-invite .venue{
@@ -534,8 +534,8 @@
   }
 
 .story-invite .deck {
-    top: 58%;
-    width: min(210px, 64vw);
+    top: 66%;
+    width: min(280px, 78vw);
   }
 
 .story-invite .story-title {

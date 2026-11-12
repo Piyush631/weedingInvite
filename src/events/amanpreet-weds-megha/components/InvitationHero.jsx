@@ -1,4 +1,5 @@
 import CoupleTitle from './CoupleTitle.jsx'
+import { wedding } from '../data/wedding.js'
 
 export default function InvitationHero({ event, villaRef, showHint }) {
   return (
@@ -7,8 +8,8 @@ export default function InvitationHero({ event, villaRef, showHint }) {
         <div className="villa-wrap">
           <img
             className="hero-portrait"
-            src={`${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/Hero1.jpeg`}
-            alt="Portrait of the couple"
+            src={`${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/pic6.jpg.jpeg`}
+            alt={`${wedding.spokenNames}`}
             fetchPriority="high"
             decoding="async"
           />
@@ -17,13 +18,14 @@ export default function InvitationHero({ event, villaRef, showHint }) {
       <div className="hero-copy">
         <CoupleTitle as="h1" className="names" />
         <br />
+        <p className="hero-hosts">{wedding.hosts}</p>
         <p className="hero-event-label">{event.heroLabel}</p>
         <p className="date"><span>{event.dateLine} {event.year}</span></p>
+        <br />
         <p className="hero-location">
-          {event.variant === 'wedding'
-            ? `${event.venues.map(venue => venue.name).join(' & ')}, ${event.venue.location}`
-            : `${event.venue.name}, ${event.venue.location}`}
-        </p> </div>
+          {event.venue.name}, {event.venue.address}
+        </p>
+      </div>
       {showHint && <p className="scroll-hint">Scroll to discover</p>}
     </section>
   )

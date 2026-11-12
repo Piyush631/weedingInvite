@@ -6,7 +6,7 @@ import { wedding } from "../data/wedding.js";
 const floats = [
   {
     src: photos.coast,
-    alt: "A beach and cliffs at sunset",
+    alt: "Renu and Rohit sitting together outdoors",
     className: "fp-coast",
     range: [0.08, 0.28],
     fromX: -110,
@@ -15,7 +15,7 @@ const floats = [
   },
   {
     src: photos.couple,
-    alt: "Dancing on the shore",
+    alt: "Renu and Rohit dancing",
     className: "fp-couple is-mono",
     range: [0.16, 0.36],
     fromX: -90,
@@ -24,7 +24,7 @@ const floats = [
   },
   {
     src: photos.cliff,
-    alt: "A cliff above the water",
+    alt: "Renu and Rohit holding hands by the water",
     className: "fp-cliff",
     range: [0.22, 0.42],
     fromX: 100,
@@ -33,7 +33,7 @@ const floats = [
   },
   {
     src: photos.shoes,
-    alt: "Shoes at the edge of a trail",
+    alt: "Renu and Rohit seated together on a mountain path",
     className: "fp-shoes",
     range: [0.28, 0.48],
     fromX: 110,
@@ -77,7 +77,7 @@ export default function Hero() {
   if (calm) {
     return (
       <section className="hero-still" aria-label={wedding.spokenNames}>
-        <img src={photos.hero} alt={`${wedding.spokenNames} in a mountain meadow`} />
+        <img src={photos.hero} alt={`${wedding.spokenNames} together`} />
       </section>
     );
   }
@@ -95,7 +95,7 @@ export default function Hero() {
           <img
             className="hero-img"
             src={photos.hero}
-            alt={`${wedding.spokenNames} in a mountain meadow`}
+            alt={`${wedding.spokenNames} together`}
             loading="lazy"
             decoding="async"
           />

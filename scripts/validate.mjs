@@ -112,8 +112,8 @@ if (!main.includes("'./app/App.jsx'")) failures.push('Main entry must use Invite
 if (!router.includes('eventRegistry') || !router.includes('<Home') || !router.includes('<NotFound')) {
   failures.push('InviteYourWay must route the homepage, registered events and unknown URLs.')
 }
-if (!registry.includes("'amanpreet-weds-megha'") || !registry.includes("['wedding', 'reception']")) {
-  failures.push('Expected both /amanpreet-weds-megha/wedding and /amanpreet-weds-megha/reception.')
+if (!registry.includes("'renu-weds-rohit'") || !registry.includes("['wedding', 'reception']")) {
+  failures.push('Expected both /renu-weds-rohit/wedding and /renu-weds-rohit/reception.')
 }
 if (!app.includes('getInvitation(page)')) failures.push('Invitation must receive its page from the main router.')
 if (app.includes('window.location.pathname')) failures.push('Invitation still contains top-level URL selection.')
@@ -124,31 +124,34 @@ if (!eventConfig.includes('wedding: {') || !eventConfig.includes('reception: {')
 if (!app.includes("useState('')")) failures.push('Day cards must begin closed.')
 if (!weekend.includes('event.schedule')) failures.push('The itinerary is not sourced from the event configuration.')
 if (!app.includes("event.variant === 'wedding' ? event.venues : [event.venue]")) failures.push('Venue display must preserve wedding / reception route behavior.')
-if (!place.includes('venues.map') || !place.includes('venue.photo')) failures.push('Both venue pictures must be rendered.')
+if (!place.includes('venues.map') || !place.includes('venue.name')) failures.push('The venue name must be rendered.')
 if (!hero.includes('hero-location') || !hero.includes('event.venue.name')) failures.push('The hero is missing the selected venue location.')
 if (!footer.includes('footerLabel') || !footer.includes('footerLocation')) failures.push('The footer must remain shared on both links.')
 
 // Execute only the dependency-free event configuration to catch content regressions.
-// This specifically prevents /reception from losing the full five-day itinerary.
+// Both links must keep the full three-day programme from the printed card.
 const configForValidation = eventConfig.replaceAll('import.meta.env.BASE_URL', JSON.stringify('/'))
 try {
   const { getInvitation } = await import(`data:text/javascript;base64,${Buffer.from(configForValidation).toString('base64')}`)
   const full = getInvitation('wedding')
   const reception = getInvitation('reception')
-  if (full.schedule.length !== 5 || JSON.stringify(full.schedule) !== JSON.stringify(reception.schedule)) {
-    failures.push('Both routes must show the same complete five-day itinerary.')
+  if (full.schedule.length !== 3 || JSON.stringify(full.schedule) !== JSON.stringify(reception.schedule)) {
+    failures.push('Both routes must show the same complete three-day programme.')
   }
   if (full.scheduleTitle !== reception.scheduleTitle) {
     failures.push('Both routes must have the same itinerary heading.')
   }
-  if (full.venues.length !== 2 || JSON.stringify(full.venues) !== JSON.stringify(reception.venues)) {
-    failures.push('Both routes must show the same two venue blocks.')
+  if (full.venues.length !== 1 || JSON.stringify(full.venues) !== JSON.stringify(reception.venues)) {
+    failures.push('Both routes must show the residence from the invitation card.')
   }
-  if (full.venues[0]?.id !== 'wedding' || full.venues[1]?.id !== 'reception') {
-    failures.push('Venue blocks must show wedding first and reception second.')
+  if (full.venues[0]?.id !== 'wedding') {
+    failures.push('The venue block must show the residence.')
   }
-  if (full.dateISO === reception.dateISO || full.venue.id === reception.venue.id) {
+  if (full.dateISO === reception.dateISO) {
     failures.push('The hero and countdown must select different event details for each URL.')
+  }
+  if (full.venue.address !== reception.venue.address) {
+    failures.push('Both routes must use the residence address from the invitation card.')
   }
   if (full.footerDate === reception.footerDate || full.footerLabel === reception.footerLabel) {
     failures.push('Keep the current route-specific footer details.')
@@ -162,8 +165,8 @@ if (!hero.includes('<CoupleTitle') || !footer.includes('<CoupleTitle') || !title
 if (hero.includes('stayLabel') || hero.includes('couple.stay')) {
   failures.push('Recommended-stay copy remains in the hero.')
 }
-if (!place.includes('place-photo') || !place.includes('venue.photo')) {
-  failures.push('The venue photograph is missing from the main venue section.')
+if (place.includes('place-photo') || place.includes('venue.photo')) {
+  failures.push('The venue photograph should stay off the invitation.')
 }
 if (storyHero.includes('hero-title') || storyHero.includes('<h1>')) {
   failures.push('Animated photo hero still overlays a large title.')
@@ -189,9 +192,6 @@ const allDirectPhotoReferences = files
   ))
 for (const filename of new Set(allDirectPhotoReferences)) {
   if (!existsSync(join(publicPhotos, filename))) failures.push(`Missing directly referenced photo: ${filename}`)
-}
-if (!eventConfig.includes('events/amanpreet-weds-megha/photos/')) {
-  failures.push('Wedding venue photo URLs must point to the event-specific asset folder.')
 }
 if (!photoConfig.includes('events/amanpreet-weds-megha/photos/')) {
   failures.push('Story photo URLs must point to the event-specific asset folder.')

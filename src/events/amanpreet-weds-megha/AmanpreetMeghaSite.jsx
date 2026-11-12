@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MotionConfig } from "framer-motion";
-import { getInvitation } from "./data/wedding.js";
+import { getInvitation, wedding } from "./data/wedding.js";
 import SiteHeader from "./components/SiteHeader.jsx";
 import SiteMenu from "./components/SiteMenu.jsx";
 import Envelope from "./components/Envelope.jsx";
@@ -34,12 +34,12 @@ export default function AmanpreetMeghaSite({ page = "wedding" }) {
   const isOpen = stage === "open";
 
   useEffect(() => {
-    document.title = `Amanpreet weds Megha | ${event.label}`;
+    document.title = `${wedding.title} | ${event.label}`;
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(
         "content",
-        `Join Amanpreet and Megha for their ${event.label.toLowerCase()} in ${event.venue.location}.`,
+        `Join ${wedding.spokenNames} for their ${event.label.toLowerCase()} in ${event.venue.location}.`,
       );
   }, [event]);
 

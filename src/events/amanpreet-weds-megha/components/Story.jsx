@@ -11,9 +11,9 @@ const chapters = [
     fade: [0.02, 0.1, 0.3, 0.4],
     levels: [0, 1, 1, 0],
     photos: [
-      { src: photos.campus, caption: "Young us", alt: "Young us!", rotate: -2.5 },
-      { src: photos.coffee, caption: "With our beloved", alt: "Coffee between classes", rotate: 2.2, mono: true },
-      { src: photos.start, caption: "Favorite place to go together", alt: "The afternoon that started everything", rotate: -1.2 },
+      { src: photos.campus, caption: "The two of us", alt: "Renu and Rohit sitting together", rotate: -2.5 },
+      { src: photos.coffee, caption: "An afternoon together", alt: "Renu and Rohit outdoors", rotate: 2.2 },
+      { src: photos.start, caption: "By the fire", alt: "Renu and Rohit beside a bonfire", rotate: -1.2 },
     ],
   },
   {
@@ -23,9 +23,9 @@ const chapters = [
     fade: [0.3, 0.42, 0.6, 0.72],
     levels: [0, 1, 1, 0],
     photos: [
-      { src: photos.corner, caption: "Stolling around with you", alt: "A favorite corner in the city", rotate: 1.6 },
-      { src: photos.downtown, caption: "Meeting after a while", alt: "A weekend downtown", rotate: -2 },
-      { src: photos.ritual, caption: "Us matching unintentionally", alt: "Sharing a meal, the everyday ritual", rotate: 2.4 },
+      { src: photos.corner, caption: "Holding on", alt: "Renu and Rohit holding hands", rotate: 1.6 },
+      { src: photos.downtown, caption: "Our dance", alt: "Renu and Rohit dancing", rotate: -2 },
+      { src: photos.ritual, caption: "Side by side", alt: "Renu and Rohit seated on a path", rotate: 2.4 },
     ],
   },
   {
@@ -35,9 +35,9 @@ const chapters = [
     fade: [0.6, 0.74, 0.9, 1],
     levels: [0, 1, 1, 1],
     photos: [
-      { src: photos.weekend, caption: "Trying best to pose", alt: "The weekend away in the mountains", rotate: -1.8 },
-      { src: photos.yes, caption: "And it is yes", alt: "Right after she said yes", rotate: 1.4 },
-      { src: photos.celebrate, caption: "Celebrating together", alt: "Celebrating together", rotate: -2.2 },
+      { src: photos.weekend, caption: "Evening by the fire", alt: "Renu and Rohit by the fire", rotate: -1.8 },
+      { src: photos.yes, caption: "On the bridge", alt: "Renu and Rohit walking on a bridge", rotate: 1.4 },
+      { src: photos.celebrate, caption: "Celebrating together", alt: "Renu and Rohit beside a bonfire", rotate: -2.2 },
     ],
   },
 ];

@@ -75,15 +75,6 @@ export default function Join({ event }) {
                 {activeVenue.label}
               </p>
 
-              <div className="venue-frame">
-                <img
-                  src={activeVenue.photo_2}
-                  alt={activeVenue.photoAlt}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
               <h2>{activeVenue.name}</h2>
 
               <a
@@ -96,7 +87,7 @@ export default function Join({ event }) {
               </a>
             </div>
 
-            {/* Slider navigation */}
+            {event.venues.length > 1 && (
             <div
               className="wedding-venue-controls"
               role="group"
@@ -132,19 +123,10 @@ export default function Join({ event }) {
                 ›
               </button>
             </div>
+            )}
           </>
         ) : (
           <>
-            {/* Reception route: existing venue UI unchanged */}
-            <motion.div className="venue-frame" {...rise}>
-              <img
-                src={event.venue.photo_2}
-                alt={event.venue.photoAlt}
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
-
             <h2>{event.venue.name}</h2>
 
             <a
