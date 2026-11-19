@@ -7,6 +7,7 @@ export default function WeddingFooter({ event }) {
       <WaxSeal className="footer-seal" />
       <CoupleTitle as="p" className="footer-names" />
       <p className="footer-meta">{event.footerLabel} · {event.footerDate} · {event.footerLocation}</p>
+      <p className="footer-credit">Design by <span>Piyush</span></p>
     </footer>
   )
 }

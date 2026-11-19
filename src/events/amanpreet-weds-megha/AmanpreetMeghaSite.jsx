@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MotionConfig } from "framer-motion";
-import { getInvitation, wedding } from "./data/wedding.js";
+import { getInvitation } from "./data/wedding.js";
+import { CoupleProvider } from "./components/CoupleContext.jsx";
 import SiteHeader from "./components/SiteHeader.jsx";
 import SiteMenu from "./components/SiteMenu.jsx";
 import Envelope from "./components/Envelope.jsx";
@@ -25,8 +26,8 @@ function prefersLessMotion() {
 }
 
 /** The parent app selects the page; both pages retain the same component tree. */
-export default function AmanpreetMeghaSite({ page = "wedding" }) {
-  const [event] = useState(() => getInvitation(page));
+export default function AmanpreetMeghaSite({ page = "wedding", side = "bride" }) {
+  const [event] = useState(() => getInvitation(page, side));
   const [stage, setStage] = useState("sealed");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -34,12 +35,12 @@ export default function AmanpreetMeghaSite({ page = "wedding" }) {
   const isOpen = stage === "open";
 
   useEffect(() => {
-    document.title = `${wedding.title} | ${event.label}`;
+    document.title = `${event.title} | ${event.label}`;
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(
         "content",
-        `Join ${wedding.spokenNames} for their ${event.label.toLowerCase()} in ${event.venue.location}.`,
+        `Join ${event.spokenNames} for their ${event.label.toLowerCase()} in ${event.venue.location}.`,
       );
   }, [event]);
 
@@ -108,6 +109,7 @@ export default function AmanpreetMeghaSite({ page = "wedding" }) {
   };
 
   return (
+    <CoupleProvider value={event}>
     <MotionConfig reducedMotion="user">
       <div className="wedding-site" data-version={event.variant}>
         <SiteHeader
@@ -162,5 +164,6 @@ export default function AmanpreetMeghaSite({ page = "wedding" }) {
         <WeddingFooter event={event} />
       </div>
     </MotionConfig>
+    </CoupleProvider>
   );
 }

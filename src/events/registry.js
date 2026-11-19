@@ -5,5 +5,11 @@ export const eventRegistry = {
   'renu-weds-rohit': {
     Component: AmanpreetMeghaSite,
     pages: ['wedding', 'reception'],
+    side: 'bride',
+  },
+  'rohit-weds-renu': {
+    Component: AmanpreetMeghaSite,
+    pages: ['wedding', 'reception'],
+    side: 'groom',
   },
 }

@@ -1,7 +1,8 @@
 import CoupleTitle from './CoupleTitle.jsx'
-import { wedding } from '../data/wedding.js'
+import { useCouple } from './CoupleContext.jsx'
 
 export default function InvitationHero({ event, villaRef, showHint }) {
+  const couple = useCouple()
   return (
     <section className="hero" aria-label={`${event.label} invitation`}>
       <div className="villa-parallax" ref={villaRef}>
@@ -9,7 +10,7 @@ export default function InvitationHero({ event, villaRef, showHint }) {
           <img
             className="hero-portrait"
             src={`${import.meta.env.BASE_URL}events/amanpreet-weds-megha/photos/pic6.jpg.jpeg`}
-            alt={`${wedding.spokenNames}`}
+            alt={`${couple.spokenNames}`}
             fetchPriority="high"
             decoding="async"
           />
@@ -18,7 +19,7 @@ export default function InvitationHero({ event, villaRef, showHint }) {
       <div className="hero-copy">
         <CoupleTitle as="h1" className="names" />
         <br />
-        <p className="hero-hosts">{wedding.hosts}</p>
+        <p className="hero-hosts">{couple.hosts}</p>
         <p className="hero-event-label">{event.heroLabel}</p>
         <p className="date"><span>{event.dateLine} {event.year}</span></p>
         <br />

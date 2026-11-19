@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { photos } from "../data/photos.js";
-import { wedding } from "../data/wedding.js";
+import { useCouple } from "./CoupleContext.jsx";
 
 const floats = [
   {
@@ -62,6 +62,7 @@ function FloatPhoto({ photo, progress }) {
 }
 
 export default function Hero() {
+  const wedding = useCouple();
   const ref = useRef(null);
   const calm = useReducedMotion() === true;
   const { scrollYProgress } = useScroll({

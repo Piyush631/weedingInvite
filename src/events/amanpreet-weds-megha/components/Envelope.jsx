@@ -1,8 +1,9 @@
-import { wedding } from '../data/wedding.js'
+import { useCouple } from './CoupleContext.jsx'
 import WaxSeal from './WaxSeal.jsx'
 import { useRef } from 'react'
 
 export default function Envelope({ opening, onOpen }) {
+  const couple = useCouple()
   const touchStartY = useRef(null)
   return (
 
@@ -64,7 +65,7 @@ export default function Envelope({ opening, onOpen }) {
           aria-label="Open the invitation"
         >
           <WaxSeal className="seal-shape" />
-          <span className="seal-letters">{wedding.monogram}</span>
+          <span className="seal-letters">{couple.monogram}</span>
         </button>
       </div>
       <p className="hint">Tap or scroll to open</p>

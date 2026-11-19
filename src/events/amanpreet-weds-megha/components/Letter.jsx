@@ -1,8 +1,9 @@
-import { wedding } from '../data/wedding.js'
 import { Flourish } from './Icons.jsx'
 import { Reveal } from './Reveal.jsx'
+import { useCouple } from './CoupleContext.jsx'
 
 export default function Letter({ message }) {
+  const couple = useCouple()
   return (
     <section className="sheet section" id="letter">
       <Reveal>
@@ -11,17 +12,17 @@ export default function Letter({ message }) {
       </Reveal>
       <Reveal>
         <p className="letter-details">
-          {wedding.groomLine}
+          {couple.partnerLine}
           <br />
-          {wedding.groomHome}
+          {couple.partnerHome}
         </p>
-        <p className="signoff"><span style={{ fontSize: '32px' }}>{wedding.signoff}</span><br />{wedding.signoffNames}</p>
+        <p className="signoff"><span style={{ fontSize: '32px' }}>{couple.signoff}</span><br />{couple.signoffNames}</p>
         <p className="rsvp">
           R.S.V.P
           <br />
-          {wedding.rsvp.names}
+          {couple.rsvp.names}
           <br />
-          {wedding.rsvp.phones.map((phone, index) => (
+          {couple.rsvp.phones.map((phone, index) => (
             <span key={phone}>
               {index > 0 && <span className="rsvp-gap"> · </span>}
               <a href={`tel:+91${phone}`}>{phone}</a>

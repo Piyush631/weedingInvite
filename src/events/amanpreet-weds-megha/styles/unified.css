@@ -603,6 +603,23 @@
   color: var(--muted);
 }
 
+.wedding-footer .footer-credit {
+  margin: 48px 0 0;
+  color: var(--muted);
+  font: 500 0.62rem / 1.4 var(--font-caps);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.wedding-footer .footer-credit span {
+  display: inline-block;
+  margin-left: 0.35em;
+  color: var(--walnut);
+  font: 400 1.7rem / 1 var(--font-script);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 @media (max-width: 900px) {
   .classic-invite .hero {
     grid-template-columns: 1fr;

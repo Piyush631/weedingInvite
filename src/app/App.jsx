@@ -15,5 +15,5 @@ export default function App() {
   if (!event || !event.pages.includes(page)) return <NotFound />
 
   const EventSite = event.Component
-  return <EventSite key={`${slug}/${page}`} page={page} />
+  return <EventSite key={`${slug}/${page}`} page={page} side={event.side} />
 }

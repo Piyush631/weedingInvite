@@ -1,6 +1,6 @@
 
-import { wedding } from '../data/wedding.js'
 import WaxSeal from './WaxSeal.jsx'
+import { useCouple } from './CoupleContext.jsx'
 
 export default function SiteHeader({
   scrolled,
@@ -8,6 +8,7 @@ export default function SiteHeader({
   onTop,
   locked
 }) {
+  const couple = useCouple()
   return (
     <header
       className={`site-header${scrolled ? ' is-stuck' : ''}`}
@@ -27,7 +28,7 @@ export default function SiteHeader({
           className="header-home-letters"
           aria-hidden="true"
         >
-          {wedding.monogram}
+          {couple.monogram}
         </span>
       </button>
 

@@ -7,8 +7,10 @@ This is one Vite + React application that can host multiple independent invitati
 | URL | Page |
 | --- | --- |
 | `/` | InviteYourWay homepage (minimal starting point) |
-| `/renu-weds-rohit/wedding` | Renu & Rohit: wedding invitation |
-| `/renu-weds-rohit/reception` | Renu & Rohit: reception invitation |
+| `/renu-weds-rohit/wedding` | Renu's family: wedding invitation |
+| `/renu-weds-rohit/reception` | Renu's family: reception of barat |
+| `/rohit-weds-renu/wedding` | Rohit's family: wedding invitation |
+| `/rohit-weds-renu/reception` | Rohit's family: departure of barat |
 | any unknown URL | Page not found |
 
 `/wedding` and `/reception` at the **root** are no longer event URLs; their fully qualified replacements are the two paths above. They both continue to render the same original invitation component tree, with their existing route-specific details.
@@ -29,6 +31,8 @@ Then visit:
 - `http://localhost:5173/`
 - `http://localhost:5173/renu-weds-rohit/wedding`
 - `http://localhost:5173/renu-weds-rohit/reception`
+- `http://localhost:5173/rohit-weds-renu/wedding`
+- `http://localhost:5173/rohit-weds-renu/reception`
 
 For a production build, run `npm run build` and `npm run preview`.
 
